@@ -1,0 +1,28 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(ProjectDir)$(OutDir)$(TargetFileName)" #>
+<#@ import namespace="T4SP.Generated" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+
+namespace T4SP.Generated
+{
+<#
+    foreach(var name in T4SP.Generated.GenerationHelpers.GetTableNames()) 
+    {
+        var refined = T4SP.Generated.GenerationHelpers.RefineProcedureName(name);
+#>
+
+    /// <summary>
+    /// Stored procedure '<#= name #>' wrapper.
+    /// </summary>
+    public class <#= refined #> 
+    { 
+         
+    } 
+<#   
+    }  
+#>
+}
